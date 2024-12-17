@@ -14,7 +14,7 @@ namespace Proje_VP
 {
     public partial class Form2 : Form
     {
-        private string _username;
+        private readonly string _username;
         public Form2(string username)
         {
             InitializeComponent();
@@ -40,7 +40,8 @@ namespace Proje_VP
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-                {                    
+                {
+                    connection.Open(); 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
                         command.Parameters.AddWithValue("@newPassword", newPassword);
